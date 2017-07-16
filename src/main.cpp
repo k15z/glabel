@@ -6,6 +6,9 @@
 
 const float LAMBDA = 0.01;
 
+/**
+ * Add the nodes to the graph.
+ */
 void create_nodes(char* graph_csv, std::map<int, Node*>& graph) {
     int src, dst;
     std::ifstream fin(graph_csv);
@@ -27,6 +30,10 @@ void create_nodes(char* graph_csv, std::map<int, Node*>& graph) {
     }
 }
 
+/**
+ * Initialize the probabilities using the labels for deterministic nodes and using the
+ * prior for unlabelled nodes.
+ */
 void init_probabilities(char* label_csv, std::map<int, Node*>& graph) {
     int node;
     std::string label;
@@ -60,6 +67,7 @@ int main(int argc, char* argv[]) {
 
     for (int i = 0; i < 100; i++)
         propagate(graph);
+    
     print(graph);
     return 0;
 }

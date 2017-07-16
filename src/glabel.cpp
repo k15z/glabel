@@ -1,12 +1,13 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <algorithm>
 #include "glabel.h"
 #include <iostream>
 
 using namespace std;
 
-const float GAMMA = 0.99;
+const float GAMMA = 0.55;
 
 void Node::standardize() {
     normalize(this->probabilities);
@@ -43,7 +44,7 @@ void normalize(std::map<std::string, float>& distribution) {
 void merge_left(std::map<std::string, float>& dst, std::map<std::string, float>& src) {
     for (auto const &pair : dst) {
         if (src.find(pair.first) != src.end())
-            dst[pair.first] = GAMMA * dst[pair.first] + (1.0 - GAMMA) * src[pair.first];
+            dst[pair.first] *= GAMMA * src[pair.first] + (1.0 - GAMMA) * (1.0 - src[pair.first]);
     }
 }
 

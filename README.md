@@ -1,4 +1,6 @@
 # glabel
+[![Build Status](https://travis-ci.org/k15z/glabel.svg?branch=master)](https://travis-ci.org/k15z/glabel)
+
 Probabilistic graph labeling. For example, suppose you have a bipartite graph which connects users
 and companies; you know the industry for many of the companies and some of the people, but want to
 estimate the industry for the rest of the nodes.
@@ -31,8 +33,8 @@ node, we would expect the output to be close to 50-50.
 1 machine-learning 0.00497512
 2 cryptocurrency 0.00497512
 2 machine-learning 0.995025
-3 cryptocurrency 0.499643
-3 machine-learning 0.500357
+3 cryptocurrency 0.5
+3 machine-learning 0.5
 ```
 
 # example 2
@@ -44,8 +46,8 @@ between node 3 and the cryptocurrency industry.
 1 2
 2 3
 3 1
-4 1
-3 4
+4 3
+4 2
 ```
 
 ```
@@ -54,7 +56,7 @@ between node 3 and the cryptocurrency industry.
 2 machine-learning
 ```
 
-As expected, we see that the probability of `cryptocurrency` for both nodes 3 and 4 has increased.
+As expected, we see that the probability of `cryptocurrency` for both nodes 3 and 4 has increased drastically.
 
 ```
 # inferred.txt
@@ -62,8 +64,8 @@ As expected, we see that the probability of `cryptocurrency` for both nodes 3 an
 1 machine-learning 0.00497512
 2 cryptocurrency 0.00497512
 2 machine-learning 0.995025
-3 cryptocurrency 0.560865
-3 machine-learning 0.439135
-4 cryptocurrency 0.731296
-4 machine-learning 0.268704
+3 cryptocurrency 6.52123e-09
+3 machine-learning 1
+4 cryptocurrency 5.30791e-17
+4 machine-learning 1
 ```
